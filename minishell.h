@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkmon <gkmon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: grobert <georgerobert147@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 08:15:29 by gkmon             #+#    #+#             */
-/*   Updated: 2023/06/19 14:06:10 by gkmon            ###   ########.fr       */
+/*   Updated: 2023/08/14 10:52:32 by grobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,7 +237,7 @@ char		*ft_null_to_str(char *ptr);
 int			ft_fill_red(t_shell *shell);
 int			ft_strlen_without(char *str, char *set);
 int			ft_intab(char *str, char **tab);
-
+char	*ft_read_heredoc_input(int file, char *limiter, char *temp);
 //	Commands
 //	cd
 int			get_oldpwd_i(char **envp);

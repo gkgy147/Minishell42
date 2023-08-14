@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_set.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkmon <gkmon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: grobert <georgerobert147@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 13:39:13 by gkmon             #+#    #+#             */
-/*   Updated: 2023/06/19 14:07:20 by gkmon            ###   ########.fr       */
+/*   Updated: 2023/07/26 08:17:36 by grobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ int	ft_continue(t_shell *shell, int n)
 	return (0);
 }
 
+/*
+Set the shell struct variables
+*/
 void	ft_shell_set(t_shell *shell)
 {
 	shell->line = 0;

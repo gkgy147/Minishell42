@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   red_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkmon <gkmon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: grobert <georgerobert147@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 08:06:19 by gkmon             #+#    #+#             */
-/*   Updated: 2023/06/19 14:03:01 by gkmon            ###   ########.fr       */
+/*   Updated: 2023/08/14 11:11:24 by grobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+extern int	g_shell_errno;
 
 int	ft_strlen_without(char *str, char *set)
 {
@@ -68,4 +70,28 @@ int	ft_intab(char *str, char **tab)
 		i++;
 	}
 	return (0);
+}
+
+char	*ft_read_heredoc_input(int file, char *limiter, char *temp)
+{
+	g_shell_errno = 0;
+	while (1)
+	{
+		write(1, "heredoc> ", 9);
+		temp = get_next_line(0);
+		if (!temp || (!ft_strncmp(temp, limiter, ft_strlen(limiter))
+				&& ft_strlen(temp) == ft_strlen(limiter) + 1))
+			break ;
+		if (g_shell_errno)
+			break ;
+		write(file, temp, ft_strlen(temp));
+		free(temp);
+	}
+	if (g_shell_errno == 130)
+	{
+		file = open(".here_doc", O_WRONLY | O_TRUNC);
+		close(file);
+		fd_printf(2, "ctl+c\n");
+	}
+	return (temp);
 }

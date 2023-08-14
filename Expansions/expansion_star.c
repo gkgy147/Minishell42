@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_star.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkmon <gkmon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: grobert <georgerobert147@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:19:52 by gkmon             #+#    #+#             */
-/*   Updated: 2023/06/19 14:20:25 by gkmon            ###   ########.fr       */
+/*   Updated: 2023/08/08 13:04:28 by grobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,14 @@ char	*ft_joiner_sep(char **strs, const char *sep)
 	return (tmp);
 }
 
+/*
+This function is used to perform wildcard character expansion 
+on a single element of the parsed array. 
+It checks for the presence of the '*' character and 
+matches it with files in the current directory. 
+If there are matching files, it updates the file string with 
+the expanded result, otherwise, it sets the file to an empty string.
+*/
 void	ft_check_exp(char **str, char **file)
 {
 	int	i;
@@ -85,6 +93,13 @@ void	ft_check_exp(char **str, char **file)
 		(*file) = ft_strdup("") + ft_free_a(&(*file), 0);
 }
 
+/*
+If the string has the '*' character and is not enclosed within quotes, 
+it calls the ft_do_exp_star function with a pointer to the string. 
+The ft_do_exp_star function performs file name expansion 
+for that specific string, replacing the string 
+with the expanded result if matches are found.
+*/
 int	ft_do_exp_star(char **str)
 {
 	char	**fs;
@@ -110,6 +125,16 @@ int	ft_do_exp_star(char **str)
 	return (1);
 }
 
+/*
+The ft_exp_star function performs file name expansion using the '*' 
+wildcard character in the parsed array. 
+It iterates through each element of the parsed array and 
+checks for the presence of the '*' character. 
+If found, it calls ft_parser to split the element into separate strings. 
+For each resulting string, it checks for the '*' character and 
+expands file names using ft_do_exp_star. 
+Finally, it updates the parsed array with the expanded result.
+*/
 void	ft_exp_star(t_shell *sh)
 {
 	int	i;

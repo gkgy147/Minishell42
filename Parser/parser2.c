@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkmon <gkmon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: grobert <georgerobert147@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:42:49 by gkmon             #+#    #+#             */
-/*   Updated: 2023/06/19 14:10:03 by gkmon            ###   ########.fr       */
+/*   Updated: 2023/07/28 02:23:56 by grobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ extern int	g_shell_errno;
  * Description:	parses the given string line creating an array
  * 		of strings divided by the characters in set; this 
  * 		function behaviour is like the ft_split one
- * 		(see 42 cursus: libft) but the splitting characters
+ * 		but the splitting charactersj
  * 		are preserved in the array as strings between
  * 		the strings of splitted elements; furthermore
  * 		the function checks if there are unclosed parentheses

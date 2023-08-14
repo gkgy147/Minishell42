@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   red_operators.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkmon <gkmon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: grobert <georgerobert147@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 06:55:51 by gkmon             #+#    #+#             */
-/*   Updated: 2023/06/19 13:56:48 by gkmon            ###   ########.fr       */
+/*   Updated: 2023/08/14 11:08:33 by grobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,25 +91,17 @@ int	ft_append_red(t_shell *shell, int n_cmd, int *ind)
 
 int	ft_here_doc(t_shell *shell, char *limiter)
 {
-	char	*temp;
 	int		file;
+	char	*temp;
 
 	file = open(".here_doc",
 			O_CREAT | O_WRONLY | O_TRUNC,
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (file == -1)
 		ft_die(shell, 1, 12);
-	while (42)
-	{
-		write(1, "heredoc> ", 9);
-		temp = get_next_line(0);
-		if (!temp || (!ft_strncmp(temp, limiter, ft_strlen(limiter))
-				&& ft_strlen(temp) == ft_strlen(limiter) + 1))
-			break ;
-		write(file, temp, ft_strlen(temp));
-		free(temp);
-	}
-	close(file);
+	temp = ft_read_heredoc_input (file, limiter, temp);
+	if (!g_shell_errno)
+		close(file);
 	if (!temp)
 		fd_printf(2, "\nWarning: here-document delimited by end-of-file\n");
 	ft_free((void **) &temp);

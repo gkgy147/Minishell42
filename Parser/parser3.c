@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkmon <gkmon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: grobert <georgerobert147@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:14:28 by gkmon             #+#    #+#             */
-/*   Updated: 2023/06/19 14:10:33 by gkmon            ###   ########.fr       */
+/*   Updated: 2023/07/26 16:11:32 by grobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ int	ft_check_beforepar(char *line)
 	return (0);
 }
 
+/*
+Error checking for commands ending with operator.eg. "cat  xxx |"
+*/
 int	ft_end_op(char *line, char **parsed)
 {
 	int	i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parantheses.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkmon <gkmon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: grobert <georgerobert147@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 08:02:30 by gkmon             #+#    #+#             */
-/*   Updated: 2023/06/20 16:04:13 by gkmon            ###   ########.fr       */
+/*   Updated: 2023/07/31 18:31:54 by grobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ int	ft_update_lvl(char c, int lvl, int *array)
 	return (lvl);
 }
 
+/*
+
+*/
 void	ft_set_lvls(char *line, int *lvls)
 {
 	int	i;
@@ -89,6 +92,20 @@ void	ft_replace(char *line, char *old, char new)
 	}
 }
 
+/*
+ This function sets the levels for commands separated by pipes or 
+ logical operators in the input line.
+ It takes a string `line` representing the input command 
+ and an integer pointer array `lvls` to store the levels.
+ The levels represent the depth of nested parentheses in the command.
+ The function iterates through the input `line`, checks for parentheses, 
+ and updates the levels accordingly.
+ It uses the `ft_update_lvl` function to keep track of the levels.
+ When encountering a pipe or logical operator, 
+ it sets the level for the corresponding command in the `lvls` array.
+ After processing the entire input `line`, 
+ the `lvls` array will have the levels for each command.
+*/
 int	ft_lvls(t_shell *shell)
 {
 	char	*line;

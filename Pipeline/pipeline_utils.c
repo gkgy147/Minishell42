@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipeline_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkmon <gkmon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: grobert <georgerobert147@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 13:39:53 by gkmon             #+#    #+#             */
-/*   Updated: 2023/06/21 17:25:15 by gkmon            ###   ########.fr       */
+/*   Updated: 2023/08/08 08:45:24 by grobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,9 @@ void	trim_strs(t_shell *shell, char **strs, const char *set)
 }
 
 /*
-	int	pre_check(t_shell *shell, char **cmd, int *id)
-
-	simple function that check if the executable and if 
-	you have the permission to execute
+int	pre_check(t_shell *shell, char **cmd, int *id)
+simple function that check if the executable and if 
+you have the permission to execute
 */
 int	pre_check(t_shell *shell, char **cmd, int *id)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals_set.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkmon <gkmon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: grobert <georgerobert147@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 11:39:43 by gkmon             #+#    #+#             */
-/*   Updated: 2023/06/19 14:07:42 by gkmon            ###   ########.fr       */
+/*   Updated: 2023/08/11 17:01:39 by grobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_handle_int(int signum)
 	if (signum != SIGINT)
 		return ;
 	write(1, "\n", 1);
+	rl_replace_line("", 0);
 	rl_on_new_line();
-	rl_replace_line("", 1);
 	rl_redisplay();
 	g_shell_errno = 130;
 }
@@ -39,6 +39,15 @@ void	ft_handle_quit(int signum)
 		return ;
 }
 
+/*
+Set up signal handling for the shell.
+Get current terminal attributes.
+Disable ECHOCTL flag to prevent echoing of control characters.
+Apply the modified terminal attributes.
+Set signal handlers for SIGINT (Ctrl+C) and SIGQUIT (Ctrl+d).
+Set SA_RESTART flag to ensure system calls interrupted by signals 
+are automatically restarted after the signal handler returns
+*/
 void	ft_signals_set(t_shell *shell)
 {
 	tcgetattr(STDIN_FILENO, &shell->tty_attrs);
